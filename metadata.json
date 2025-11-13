@@ -1,0 +1,5 @@
+{
+  "name": "TST Technologies Website",
+  "description": "A modern, responsive frontend for TST Technologies, featuring a dynamic hero slider, product showcase with filtering, category pages, and an inquiry modal. Built with React, TypeScript, and Tailwind CSS.",
+  "requestFramePermissions": []
+}
