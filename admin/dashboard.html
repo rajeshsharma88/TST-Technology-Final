@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Admin Dashboard - TST Technologies</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <aside class="sidebar">
+            <h2>TST<span style="color: #007bff;">Tech</span></h2>
+            <ul>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Inquiries</a></li>
+                <li><a href="#">Users</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Dashboard</h1>
+                <a href="#" id="logout-btn" class="logout-btn">Logout</a>
+            </header>
+            <div class="dashboard-card">
+                <h2>Welcome, Admin!</h2>
+                <p>This is a basic dashboard. From here you would manage products, view inquiries, and more.</p>
+                <p>This section is currently for demonstration purposes only.</p>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.getElementById('logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.removeItem('isAdminAuthenticated');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

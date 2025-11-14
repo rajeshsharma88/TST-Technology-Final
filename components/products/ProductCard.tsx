@@ -14,12 +14,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, openModal }) => {
   };
     
   return (
-    <div className="group relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+    <div className="group relative flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1">
       <div className="relative aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden">
         <img
           src={product.main_image}
           alt={product.title}
-          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-105"
         />
         {product.is_featured && (
             <span className="absolute top-3 left-3 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded-full">Featured</span>
