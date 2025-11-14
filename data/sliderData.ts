@@ -1,7 +1,6 @@
-
 import { Slide } from '../types';
 
-export const sliderData: Slide[] = [
+const staticSliderData: Slide[] = [
   {
     id: 1,
     title: "Transform Your Business with Technology",
@@ -41,3 +40,20 @@ export const sliderData: Slide[] = [
     cta2_link: "#inquiry-form",
   }
 ];
+
+let sliderData: Slide[];
+
+try {
+  const storedSliderDataJSON = localStorage.getItem('sliderData');
+  if (storedSliderDataJSON) {
+    sliderData = JSON.parse(storedSliderDataJSON);
+  } else {
+    sliderData = staticSliderData;
+    localStorage.setItem('sliderData', JSON.stringify(staticSliderData));
+  }
+} catch (error) {
+  console.error('Error handling sliderData from localStorage:', error);
+  sliderData = staticSliderData;
+}
+
+export { sliderData };

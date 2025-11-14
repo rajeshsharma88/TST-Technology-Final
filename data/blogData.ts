@@ -1,7 +1,6 @@
-
 import { Blog } from '../types';
 
-export const blogData: Blog[] = [
+const staticBlogData: Blog[] = [
   {
     id: 1,
     slug: "demystifying-cloud-computing",
@@ -91,3 +90,20 @@ export const blogData: Blog[] = [
     published_date: "2024-04-18",
   },
 ];
+
+let blogData: Blog[];
+
+try {
+  const storedBlogDataJSON = localStorage.getItem('blogData');
+  if (storedBlogDataJSON) {
+    blogData = JSON.parse(storedBlogDataJSON);
+  } else {
+    blogData = staticBlogData;
+    localStorage.setItem('blogData', JSON.stringify(staticBlogData));
+  }
+} catch (error) {
+  console.error('Error handling blogData from localStorage:', error);
+  blogData = staticBlogData;
+}
+
+export { blogData };

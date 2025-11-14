@@ -13,8 +13,9 @@ This is a modern, responsive frontend for TST Technologies, a fictional IT solut
 - **Category & Product Pages:** Dedicated pages for categories and detailed product views.
 - **Blog Section:** A simple blog with a listing page and detail pages for articles.
 - **Interactive Inquiry Modal:** A pop-up form for users to make general or product-specific inquiries.
-- **Admin Panel:** A basic, password-protected admin section.
+- **Admin Panel:** A basic, password-protected admin section with full CRUD (Create, Read, Update, Delete) functionality for products.
 - **Static Pages:** Includes "About Us" and "Contact Us" pages.
+- **Dynamic Content:** Product data can be managed from the admin panel, with changes reflected instantly on the live site (data is stored in browser's localStorage).
 
 ## Tech Stack
 
@@ -97,7 +98,7 @@ A simple admin panel is included for demonstration purposes.
 2.  **Enter Credentials:**
     - **Username:** `admin`
     - **Password:** `password`
-3.  **Access Dashboard:** Upon successful login, you will be redirected to the admin dashboard.
+3.  **Access Dashboard:** Upon successful login, you will be redirected to the admin dashboard. From here, you can manage products.
 
 ## File Structure
 
@@ -107,9 +108,15 @@ A simple admin panel is included for demonstration purposes.
 │   │   └── admin-style.css   # Styles for admin pages
 │   ├── js/
 │   │   ├── auth.js           # Protects dashboard page
-│   │   └── login.js          # Handles login logic
+│   │   ├── login.js          # Handles login logic
+│   │   ├── data-manager.js   # Handles localStorage data for admin
+│   │   ├── static-data.js    # Holds initial data for admin
+│   │   ├── products.js       # Logic for product list page
+│   │   └── product-edit.js   # Logic for product edit page
 │   ├── dashboard.html        # Admin dashboard page
-│   └── index.html            # Admin login page
+│   ├── index.html            # Admin login page
+│   ├── products.html         # Product management page
+│   └── product-edit.html     # Product creation/editing page
 ├── components/
 │   ├── blog/
 │   ├── home/
@@ -117,7 +124,7 @@ A simple admin panel is included for demonstration purposes.
 │   ├── products/
 │   ├── shared/
 │   └── ui/
-├── data/                     # Mock data files
+├── data/                     # Mock data files with localStorage logic
 ├── pages/                    # Page components
 ├── App.tsx                   # Main application component with routing
 ├── index.html                # Main HTML entry point for the React app

@@ -1,7 +1,6 @@
-
 import { Category } from '../types';
 
-export const categories: Category[] = [
+const staticCategories: Category[] = [
   {
     id: 1,
     name: 'Web Development',
@@ -51,3 +50,20 @@ export const categories: Category[] = [
     productCount: 3,
   },
 ];
+
+let categories: Category[];
+
+try {
+  const storedCategoriesJSON = localStorage.getItem('categories');
+  if (storedCategoriesJSON) {
+    categories = JSON.parse(storedCategoriesJSON);
+  } else {
+    categories = staticCategories;
+    localStorage.setItem('categories', JSON.stringify(staticCategories));
+  }
+} catch (error) {
+  console.error('Error handling categories from localStorage:', error);
+  categories = staticCategories;
+}
+
+export { categories };

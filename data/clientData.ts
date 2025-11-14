@@ -1,7 +1,6 @@
-
 import { Client } from '../types';
 
-export const clientData: Client[] = [
+const staticClientData: Client[] = [
   { id: 1, client_name: 'TechCorp', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=TechCorp' },
   { id: 2, client_name: 'Innovate Inc', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=Innovate' },
   { id: 3, client_name: 'Solutions Ltd', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=Solutions' },
@@ -15,3 +14,20 @@ export const clientData: Client[] = [
   { id: 11, client_name: 'NextGen', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=NextGen' },
   { id: 12, client_name: 'Connect IT', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=ConnectIT' },
 ];
+
+let clientData: Client[];
+
+try {
+  const storedClientDataJSON = localStorage.getItem('clientData');
+  if (storedClientDataJSON) {
+    clientData = JSON.parse(storedClientDataJSON);
+  } else {
+    clientData = staticClientData;
+    localStorage.setItem('clientData', JSON.stringify(staticClientData));
+  }
+} catch (error) {
+  console.error('Error handling clientData from localStorage:', error);
+  clientData = staticClientData;
+}
+
+export { clientData };

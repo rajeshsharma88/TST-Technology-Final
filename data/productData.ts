@@ -1,7 +1,6 @@
-
 import { Product } from '../types';
 
-export const products: Product[] = [
+const staticProducts: Product[] = [
     {
         id: 1,
         title: "Enterprise Web Application",
@@ -410,3 +409,20 @@ export const products: Product[] = [
         is_featured: false,
     }
 ];
+
+let products: Product[];
+
+try {
+  const storedProductsJSON = localStorage.getItem('products');
+  if (storedProductsJSON) {
+    products = JSON.parse(storedProductsJSON);
+  } else {
+    products = staticProducts;
+    localStorage.setItem('products', JSON.stringify(staticProducts));
+  }
+} catch (error) {
+  console.error('Error handling products from localStorage:', error);
+  products = staticProducts;
+}
+
+export { products };
