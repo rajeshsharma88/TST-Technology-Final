@@ -29,7 +29,10 @@ export interface Product {
   id: number;
   title: string;
   slug: string;
+  model_number: string;
   description: string;
+  features: string[];
+  specifications: { name: string; value: string; }[];
   price: number;
   discount_price?: number;
   category: string;

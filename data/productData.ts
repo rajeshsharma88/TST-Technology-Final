@@ -6,7 +6,22 @@ export const products: Product[] = [
         id: 1,
         title: "Enterprise Web Application",
         slug: "enterprise-web-application",
-        description: "Scalable web application built with modern technologies for large businesses.",
+        model_number: "EWA-2024-PRO",
+        description: "Scalable web application built with modern technologies for large businesses, focusing on performance, security, and maintainability.",
+        features: [
+            "Microservices architecture for scalability",
+            "Role-based access control (RBAC)",
+            "Advanced analytics dashboard",
+            "Third-party API integration support",
+            "CI/CD pipeline setup included"
+        ],
+        specifications: [
+            { name: "Backend Framework", value: "Node.js (Express) / Django" },
+            { name: "Frontend Framework", value: "React with TypeScript" },
+            { name: "Database", value: "PostgreSQL / MongoDB" },
+            { name: "Deployment", value: "Docker & Kubernetes" },
+            { name: "Initial User Capacity", value: "100,000 users" }
+        ],
         price: 10000,
         discount_price: 7999,
         category: "Web Development",
@@ -19,7 +34,22 @@ export const products: Product[] = [
         id: 2,
         title: "E-commerce Platform",
         slug: "ecommerce-platform",
-        description: "A complete solution for your online store with payment gateway integration.",
+        model_number: "ECP-2024-STD",
+        description: "A complete solution for your online store with payment gateway integration, inventory management, and customer relationship tools.",
+        features: [
+            "Secure payment gateway integration (Stripe, PayPal)",
+            "Product and inventory management system",
+            "Customer account and order history",
+            "Discount and coupon code engine",
+            "Responsive design for mobile shopping"
+        ],
+        specifications: [
+            { name: "Platform", value: "Shopify / Magento / Custom" },
+            { name: "Payment Integrations", value: "Stripe, PayPal, Braintree" },
+            { name: "Admin Panel", value: "Included" },
+            { name: "Hosting", value: "Managed Cloud Hosting" },
+            { name: "Support", value: "24/7 Technical Support" }
+        ],
         price: 5000,
         category: "Web Development",
         category_slug: "web-development",
@@ -31,7 +61,22 @@ export const products: Product[] = [
         id: 3,
         title: "iOS & Android Mobile App",
         slug: "ios-android-mobile-app",
-        description: "Native mobile application for both iOS and Android platforms.",
+        model_number: "NMA-2024-PRO",
+        description: "Native mobile application for both iOS and Android platforms, designed for optimal performance and user experience.",
+        features: [
+            "Native performance on iOS and Android",
+            "Push notifications",
+            "Offline mode capabilities",
+            "App Store & Google Play submission",
+            "Analytics and crash reporting"
+        ],
+        specifications: [
+            { name: "iOS Language", value: "Swift" },
+            { name: "Android Language", value: "Kotlin" },
+            { name: "Backend API", value: "RESTful or GraphQL" },
+            { name: "Database", value: "Firebase / AWS DynamoDB" },
+            { name: "UI/UX Design", value: "Included (Figma)" }
+        ],
         price: 15000,
         category: "Mobile App Development",
         category_slug: "mobile-app-development",
@@ -43,7 +88,22 @@ export const products: Product[] = [
         id: 4,
         title: "Cloud Migration Service",
         slug: "cloud-migration-service",
-        description: "Seamlessly migrate your existing infrastructure to the cloud.",
+        model_number: "CMS-AWS-GCP",
+        description: "Seamlessly migrate your existing infrastructure, applications, and data to the cloud with minimal downtime.",
+        features: [
+            "Full infrastructure assessment",
+            "Lift-and-shift or re-architecting strategies",
+            "Data migration and synchronization",
+            "Post-migration support and optimization",
+            "Security and compliance checks"
+        ],
+        specifications: [
+            { name: "Target Clouds", value: "AWS, Google Cloud, Azure" },
+            { name: "Downtime", value: "Minimized, planned windows" },
+            { name: "Project Management", value: "Agile methodology" },
+            { name: "Team Certifications", value: "AWS Certified Solutions Architect, etc." },
+            { name: "Tools", value: "Terraform, Ansible" }
+        ],
         price: 8000,
         category: "Cloud Solutions",
         category_slug: "cloud-solutions",
@@ -55,7 +115,22 @@ export const products: Product[] = [
         id: 5,
         title: "Managed Kubernetes",
         slug: "managed-kubernetes",
-        description: "Hassle-free Kubernetes cluster management and maintenance.",
+        model_number: "MKS-2024-ENT",
+        description: "Hassle-free Kubernetes cluster management, including setup, monitoring, scaling, and maintenance.",
+        features: [
+            "Cluster provisioning and configuration",
+            "24/7 monitoring and alerting",
+            "Automated scaling and load balancing",
+            "Security hardening and updates",
+            "Dedicated DevOps support"
+        ],
+        specifications: [
+            { name: "Provider", value: "Amazon EKS, Google GKE, Azure AKS" },
+            { name: "Monitoring Stack", value: "Prometheus & Grafana" },
+            { name: "Logging", value: "ELK Stack (Elasticsearch, Logstash, Kibana)" },
+            { name: "SLA", value: "99.9% Uptime Guarantee" },
+            { name: "Pricing Model", value: "Per node / Per cluster" }
+        ],
         price: 2500,
         category: "Cloud Solutions",
         category_slug: "cloud-solutions",
@@ -67,7 +142,22 @@ export const products: Product[] = [
         id: 6,
         title: "Digital Strategy Consulting",
         slug: "digital-strategy-consulting",
-        description: "Expert guidance to shape your company's digital future.",
+        model_number: "DSC-Q1-2024",
+        description: "Expert guidance to shape your company's digital future, from market analysis to technology roadmapping.",
+        features: [
+            "Market and competitor analysis",
+            "Technology stack assessment",
+            "Digital transformation roadmap",
+            "Customer journey mapping",
+            "KPI and success metric definition"
+        ],
+        specifications: [
+            { name: "Duration", value: "4-6 week engagement" },
+            { name: "Deliverables", value: "Strategy Document, Roadmap, Presentation" },
+            { name: "Team", value: "Senior Consultant, Business Analyst" },
+            { name: "Workshops", value: "Included" },
+            { name: "Follow-up", value: "Quarterly review sessions" }
+        ],
         price: 3000,
         category: "IT Consulting",
         category_slug: "it-consulting",
@@ -79,7 +169,22 @@ export const products: Product[] = [
         id: 7,
         title: "SEO Optimization Package",
         slug: "seo-optimization-package",
-        description: "Improve your search engine rankings and drive organic traffic.",
+        model_number: "SEO-ADV-2024",
+        description: "Improve your search engine rankings and drive organic traffic with our comprehensive SEO package.",
+        features: [
+            "Technical SEO audit and fixes",
+            "On-page content optimization",
+            "Keyword research and mapping",
+            "Backlink analysis and building strategy",
+            "Monthly performance reporting"
+        ],
+        specifications: [
+            { name: "Keywords Tracked", value: "Up to 100" },
+            { name: "Reporting Frequency", value: "Monthly" },
+            { name: "Content Creation", value: "2 blog posts per month" },
+            { name: "Tools", value: "Ahrefs, SEMrush, Google Analytics" },
+            { name: "Contract Length", value: "6 months minimum" }
+        ],
         price: 1500,
         discount_price: 1200,
         category: "Digital Marketing",
@@ -92,7 +197,22 @@ export const products: Product[] = [
         id: 8,
         title: "Penetration Testing",
         slug: "penetration-testing",
-        description: "Identify and fix security vulnerabilities in your systems.",
+        model_number: "PENTEST-EXT-01",
+        description: "Identify and fix security vulnerabilities in your systems with our ethical hacking and penetration testing services.",
+        features: [
+            "External network testing",
+            "Web application vulnerability assessment",
+            "Internal network testing",
+            "Social engineering simulation",
+            "Comprehensive report with remediation steps"
+        ],
+        specifications: [
+            { name: "Methodology", value: "OWASP, PTES" },
+            { name: "Report Format", value: "PDF with executive summary and technical details" },
+            { name: "Retesting", value: "Included for identified vulnerabilities" },
+            { name: "Team Certification", value: "OSCP, CEH" },
+            { name: "Scope", value: "Defined in pre-engagement call" }
+        ],
         price: 6000,
         category: "Cybersecurity",
         category_slug: "cybersecurity",
@@ -104,7 +224,22 @@ export const products: Product[] = [
         id: 9,
         title: "Small Business Website",
         slug: "small-business-website",
-        description: "Professional and responsive website for your small business.",
+        model_number: "SBW-CMS-2024",
+        description: "Professional and responsive website for your small business, built on an easy-to-use content management system (CMS).",
+        features: [
+            "Up to 5 pages (e.g., Home, About, Services, Blog, Contact)",
+            "Responsive design for all devices",
+            "Contact form with email notifications",
+            "Basic SEO setup",
+            "1-hour training on using the CMS"
+        ],
+        specifications: [
+            { name: "CMS", value: "WordPress" },
+            { name: "Hosting", value: "Not included (recommendations provided)" },
+            { name: "Turnaround Time", value: "2-3 weeks" },
+            { name: "Revisions", value: "Up to 2 rounds" },
+            { name: "Stock Photos", value: "Included (up to 10)" }
+        ],
         price: 2500,
         category: "Web Development",
         category_slug: "web-development",
@@ -116,7 +251,22 @@ export const products: Product[] = [
         id: 10,
         title: "Hybrid Mobile App",
         slug: "hybrid-mobile-app",
-        description: "Cost-effective mobile app for multiple platforms using a single codebase.",
+        model_number: "HMA-RN-2024",
+        description: "Cost-effective mobile app for multiple platforms using a single codebase, ideal for faster time-to-market.",
+        features: [
+            "Cross-platform compatibility (iOS & Android)",
+            "Access to native device features (camera, GPS)",
+            "Single codebase for easier maintenance",
+            "Faster development cycle",
+            "UI components that mimic native look and feel"
+        ],
+        specifications: [
+            { name: "Framework", value: "React Native / Flutter" },
+            { name: "Backend API", value: "RESTful or GraphQL" },
+            { name: "Database", value: "Firebase / AWS DynamoDB" },
+            { name: "Code Sharing", value: "~90% between platforms" },
+            { name: "Performance", value: "Near-native" }
+        ],
         price: 9000,
         category: "Mobile App Development",
         category_slug: "mobile-app-development",
@@ -128,7 +278,22 @@ export const products: Product[] = [
         id: 11,
         title: "Social Media Management",
         slug: "social-media-management",
-        description: "Engage your audience and grow your brand on social media.",
+        model_number: "SMM-GROW-M",
+        description: "Engage your audience and grow your brand on social media with our monthly management package.",
+        features: [
+            "Content creation and scheduling",
+            "Community engagement and moderation",
+            "Audience growth strategies",
+            "Monthly analytics and performance report",
+            "Management of up to 3 social platforms"
+        ],
+        specifications: [
+            { name: "Platforms", value: "Facebook, Instagram, LinkedIn, X" },
+            { name: "Posts per Week", value: "3-5 per platform" },
+            { name: "Reporting", value: "Monthly PDF report" },
+            { name: "Ad Spend", value: "Not included" },
+            { name: "Content", value: "Custom graphics and copy" }
+        ],
         price: 800,
         category: "Digital Marketing",
         category_slug: "digital-marketing",
@@ -140,7 +305,22 @@ export const products: Product[] = [
         id: 12,
         title: "Backup & Disaster Recovery",
         slug: "backup-disaster-recovery",
-        description: "Protect your data with automated backups and recovery plans.",
+        model_number: "BDR-PLAN-01",
+        description: "Protect your data with automated backups and a comprehensive disaster recovery plan to ensure business continuity.",
+        features: [
+            "Automated daily backups",
+            "Secure, off-site storage",
+            "Regular recovery testing",
+            "Detailed recovery plan (RTO/RPO)",
+            "24/7 monitoring of backup jobs"
+        ],
+        specifications: [
+            { name: "Recovery Time Objective (RTO)", value: "< 4 hours" },
+            { name: "Recovery Point Objective (RPO)", value: "< 24 hours" },
+            { name: "Storage Location", value: "Geographically redundant data centers" },
+            { name: "Encryption", value: "AES-256 at rest and in transit" },
+            { name: "Retention Policy", value: "30 days standard, customizable" }
+        ],
         price: 1200,
         category: "Cloud Solutions",
         category_slug: "cloud-solutions",
@@ -152,7 +332,22 @@ export const products: Product[] = [
         id: 13,
         title: "Security Audit",
         slug: "security-audit",
-        description: "Comprehensive review of your security policies and infrastructure.",
+        model_number: "SA-COMP-2024",
+        description: "Comprehensive review of your security policies, procedures, and infrastructure to identify gaps and ensure compliance.",
+        features: [
+            "Policy and procedure review",
+            "Infrastructure vulnerability scan",
+            "Access control audit",
+            "Compliance check (GDPR, HIPAA, etc.)",
+            "Detailed report with risk scoring and recommendations"
+        ],
+        specifications: [
+            { name: "Frameworks", value: "NIST, ISO 27001, CIS" },
+            { name: "Tools", value: "Nessus, OpenVAS" },
+            { name: "Duration", value: "1-2 weeks" },
+            { name: "Deliverable", value: "Audit Report, Remediation Plan" },
+            { name: "On-site Option", value: "Available" }
+        ],
         price: 4500,
         category: "Cybersecurity",
         category_slug: "cybersecurity",
@@ -164,7 +359,22 @@ export const products: Product[] = [
         id: 14,
         title: "CMS Development",
         slug: "cms-development",
-        description: "Custom content management system to easily manage your website content.",
+        model_number: "CMS-HEADLESS-24",
+        description: "Custom content management system, including headless CMS options, to easily manage your website content across multiple platforms.",
+        features: [
+            "Custom content models",
+            "User-friendly editing interface",
+            "Role-based permissions for content editors",
+            "API-first (headless) architecture option",
+            "Integration with frontend frameworks"
+        ],
+        specifications: [
+            { name: "Technology", value: "Strapi, Sanity.io, or custom build" },
+            { name: "Frontend", value: "Agnostic (works with React, Vue, etc.)" },
+            { name: "API", value: "RESTful and GraphQL" },
+            { name: "Hosting", value: "Cloud-based" },
+            { name: "Training", value: "Included for your team" }
+        ],
         price: 4000,
         category: "Web Development",
         category_slug: "web-development",
@@ -176,7 +386,22 @@ export const products: Product[] = [
         id: 15,
         title: "Cloud Cost Optimization",
         slug: "cloud-cost-optimization",
-        description: "Analyze and reduce your cloud spending without sacrificing performance.",
+        model_number: "CCO-AUDIT-Q1",
+        description: "Analyze and reduce your cloud spending without sacrificing performance through our detailed audit and optimization service.",
+        features: [
+            "Spending analysis and reporting",
+            "Identification of unused or underutilized resources",
+            "Recommendations for right-sizing instances",
+            "Reserved Instances (RI) and Savings Plans analysis",
+            "Implementation of cost-saving measures"
+        ],
+        specifications: [
+            { name: "Cloud Providers", value: "AWS, Google Cloud, Azure" },
+            { name: "Estimated Savings", value: "15-40% on average" },
+            { name: "Pricing Model", value: "Fixed fee or percentage of savings" },
+            { name: "Tools", value: "Cloud-native tools (e.g., AWS Cost Explorer)" },
+            { name: "Engagement", value: "One-time audit or ongoing management" }
+        ],
         price: 1800,
         category: "Cloud Solutions",
         category_slug: "cloud-solutions",

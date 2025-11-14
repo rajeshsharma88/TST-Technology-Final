@@ -12,11 +12,13 @@ interface ProductDetailPageProps {
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ openModal }) => {
   const { slug } = useParams<{ slug: string }>();
   const [product, setProduct] = useState<Product | null | undefined>(undefined);
+  const [activeTab, setActiveTab] = useState<'features' | 'specifications'>('features');
 
   useEffect(() => {
     // Simulate fetching data
     const foundProduct = products.find(p => p.slug === slug);
     setProduct(foundProduct);
+    setActiveTab('features'); // Reset tab on product change
   }, [slug]);
 
   if (product === undefined) {
@@ -42,10 +44,17 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ openModal }) => {
   const relatedProducts = products
     .filter(p => p.category_slug === product.category_slug && p.id !== product.id)
     .slice(0, 4);
+    
+  const tabClasses = (tabName: 'features' | 'specifications') => 
+    `whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ${
+      activeTab === tabName
+        ? 'border-blue-600 text-blue-600'
+        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+    }`;
 
   return (
     <div className="bg-white">
-      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 pt-12 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start">
           {/* Image gallery */}
           <div className="aspect-w-1 aspect-h-1">
@@ -73,6 +82,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ openModal }) => {
             </nav>
 
             <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">{product.title}</h1>
+            <p className="mt-2 text-base text-gray-500">Model: {product.model_number}</p>
             
             <div className="mt-4">
               <p className="text-3xl text-gray-900">
@@ -109,6 +119,43 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ openModal }) => {
           </div>
         </div>
       </div>
+
+      {/* Details Section */}
+       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="border-b border-gray-200">
+            <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+              <button className={tabClasses('features')} onClick={() => setActiveTab('features')}>
+                Features
+              </button>
+              <button className={tabClasses('specifications')} onClick={() => setActiveTab('specifications')}>
+                Technical Specifications
+              </button>
+            </nav>
+          </div>
+          <div className="mt-6">
+            {activeTab === 'features' && (
+              <div className="prose max-w-none text-gray-700">
+                <ul className="list-disc space-y-2 pl-5">
+                  {product.features.map((feature, index) => <li key={index}>{feature}</li>)}
+                </ul>
+              </div>
+            )}
+            {activeTab === 'specifications' && (
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {product.specifications.map((spec, index) => (
+                      <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{spec.name}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{spec.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+       </div>
       
       {/* Related products */}
       {relatedProducts.length > 0 && (
