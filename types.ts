@@ -30,6 +30,9 @@ export interface Product {
   title: string;
   slug: string;
   model_number: string;
+  sku?: string;
+  dimensions?: string;
+  warranty_info?: string;
   description: string;
   features: string[];
   specifications: { name: string; value: string; }[];

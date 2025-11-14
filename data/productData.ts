@@ -6,6 +6,9 @@ const staticProducts: Product[] = [
         title: "Enterprise Web Application",
         slug: "enterprise-web-application",
         model_number: "EWA-2024-PRO",
+        sku: "TST-EWA-PRO",
+        dimensions: "N/A (Software)",
+        warranty_info: "1 Year Support",
         description: "Scalable web application built with modern technologies for large businesses, focusing on performance, security, and maintainability.",
         features: [
             "Microservices architecture for scalability",
@@ -34,6 +37,9 @@ const staticProducts: Product[] = [
         title: "E-commerce Platform",
         slug: "ecommerce-platform",
         model_number: "ECP-2024-STD",
+        sku: "TST-ECP-STD",
+        dimensions: "N/A (Software)",
+        warranty_info: "6 Months Support",
         description: "A complete solution for your online store with payment gateway integration, inventory management, and customer relationship tools.",
         features: [
             "Secure payment gateway integration (Stripe, PayPal)",
@@ -61,6 +67,9 @@ const staticProducts: Product[] = [
         title: "iOS & Android Mobile App",
         slug: "ios-android-mobile-app",
         model_number: "NMA-2024-PRO",
+        sku: "TST-NMA-PRO",
+        dimensions: "N/A (Software)",
+        warranty_info: "1 Year Support",
         description: "Native mobile application for both iOS and Android platforms, designed for optimal performance and user experience.",
         features: [
             "Native performance on iOS and Android",
@@ -88,6 +97,9 @@ const staticProducts: Product[] = [
         title: "Cloud Migration Service",
         slug: "cloud-migration-service",
         model_number: "CMS-AWS-GCP",
+        sku: "TST-CMS-SVC",
+        dimensions: "N/A (Service)",
+        warranty_info: "30-Day Post-Migration Support",
         description: "Seamlessly migrate your existing infrastructure, applications, and data to the cloud with minimal downtime.",
         features: [
             "Full infrastructure assessment",
@@ -115,6 +127,9 @@ const staticProducts: Product[] = [
         title: "Managed Kubernetes",
         slug: "managed-kubernetes",
         model_number: "MKS-2024-ENT",
+        sku: "TST-MKS-ENT",
+        dimensions: "N/A (Service)",
+        warranty_info: "SLA-based Support",
         description: "Hassle-free Kubernetes cluster management, including setup, monitoring, scaling, and maintenance.",
         features: [
             "Cluster provisioning and configuration",
@@ -142,6 +157,9 @@ const staticProducts: Product[] = [
         title: "Digital Strategy Consulting",
         slug: "digital-strategy-consulting",
         model_number: "DSC-Q1-2024",
+        sku: "TST-DSC-SVC",
+        dimensions: "N/A (Service)",
+        warranty_info: "N/A (Consulting)",
         description: "Expert guidance to shape your company's digital future, from market analysis to technology roadmapping.",
         features: [
             "Market and competitor analysis",
@@ -169,6 +187,9 @@ const staticProducts: Product[] = [
         title: "SEO Optimization Package",
         slug: "seo-optimization-package",
         model_number: "SEO-ADV-2024",
+        sku: "TST-SEO-ADV",
+        dimensions: "N/A (Service)",
+        warranty_info: "Results-based review",
         description: "Improve your search engine rankings and drive organic traffic with our comprehensive SEO package.",
         features: [
             "Technical SEO audit and fixes",
@@ -197,6 +218,9 @@ const staticProducts: Product[] = [
         title: "Penetration Testing",
         slug: "penetration-testing",
         model_number: "PENTEST-EXT-01",
+        sku: "TST-PENTEST-EXT",
+        dimensions: "N/A (Service)",
+        warranty_info: "Includes one free re-test",
         description: "Identify and fix security vulnerabilities in your systems with our ethical hacking and penetration testing services.",
         features: [
             "External network testing",
@@ -224,6 +248,9 @@ const staticProducts: Product[] = [
         title: "Small Business Website",
         slug: "small-business-website",
         model_number: "SBW-CMS-2024",
+        sku: "TST-SBW-CMS",
+        dimensions: "N/A (Software)",
+        warranty_info: "90-Day Bug-Fix Warranty",
         description: "Professional and responsive website for your small business, built on an easy-to-use content management system (CMS).",
         features: [
             "Up to 5 pages (e.g., Home, About, Services, Blog, Contact)",
@@ -251,6 +278,9 @@ const staticProducts: Product[] = [
         title: "Hybrid Mobile App",
         slug: "hybrid-mobile-app",
         model_number: "HMA-RN-2024",
+        sku: "TST-HMA-RN",
+        dimensions: "N/A (Software)",
+        warranty_info: "1 Year Support",
         description: "Cost-effective mobile app for multiple platforms using a single codebase, ideal for faster time-to-market.",
         features: [
             "Cross-platform compatibility (iOS & Android)",
@@ -278,6 +308,9 @@ const staticProducts: Product[] = [
         title: "Social Media Management",
         slug: "social-media-management",
         model_number: "SMM-GROW-M",
+        sku: "TST-SMM-SVC",
+        dimensions: "N/A (Service)",
+        warranty_info: "N/A (Service)",
         description: "Engage your audience and grow your brand on social media with our monthly management package.",
         features: [
             "Content creation and scheduling",
@@ -305,6 +338,9 @@ const staticProducts: Product[] = [
         title: "Backup & Disaster Recovery",
         slug: "backup-disaster-recovery",
         model_number: "BDR-PLAN-01",
+        sku: "TST-BDR-SVC",
+        dimensions: "N/A (Service)",
+        warranty_info: "SLA-based Support",
         description: "Protect your data with automated backups and a comprehensive disaster recovery plan to ensure business continuity.",
         features: [
             "Automated daily backups",
@@ -332,6 +368,9 @@ const staticProducts: Product[] = [
         title: "Security Audit",
         slug: "security-audit",
         model_number: "SA-COMP-2024",
+        sku: "TST-SA-SVC",
+        dimensions: "N/A (Service)",
+        warranty_info: "N/A (Audit)",
         description: "Comprehensive review of your security policies, procedures, and infrastructure to identify gaps and ensure compliance.",
         features: [
             "Policy and procedure review",
@@ -359,6 +398,9 @@ const staticProducts: Product[] = [
         title: "CMS Development",
         slug: "cms-development",
         model_number: "CMS-HEADLESS-24",
+        sku: "TST-CMS-HLS",
+        dimensions: "N/A (Software)",
+        warranty_info: "1 Year Support",
         description: "Custom content management system, including headless CMS options, to easily manage your website content across multiple platforms.",
         features: [
             "Custom content models",
@@ -386,6 +428,9 @@ const staticProducts: Product[] = [
         title: "Cloud Cost Optimization",
         slug: "cloud-cost-optimization",
         model_number: "CCO-AUDIT-Q1",
+        sku: "TST-CCO-SVC",
+        dimensions: "N/A (Service)",
+        warranty_info: "N/A (Audit)",
         description: "Analyze and reduce your cloud spending without sacrificing performance through our detailed audit and optimization service.",
         features: [
             "Spending analysis and reporting",
