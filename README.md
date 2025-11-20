@@ -13,7 +13,7 @@ This is a modern, responsive frontend for TST Technologies, a fictional IT solut
 - **Category & Product Pages:** Dedicated pages for categories and detailed product views.
 - **Blog Section:** A simple blog with a listing page and detail pages for articles.
 - **Interactive Inquiry Modal:** A pop-up form for users to make general or product-specific inquiries.
-- **Admin Panel:** A basic, password-protected admin section with full CRUD (Create, Read, Update, Delete) functionality for products.
+- **Admin Panel:** A basic, password-protected admin section with full CRUD (Create, Read, Update, Delete) functionality for products, categories, and client logos.
 - **Static Pages:** Includes "About Us" and "Contact Us" pages.
 - **Dynamic Content:** Product data can be managed from the admin panel, with changes reflected instantly on the live site (data is stored in browser's localStorage).
 
@@ -33,72 +33,131 @@ This project is designed to run in a web-based development environment. No local
     - Use the filters on the Products page to narrow down the product list.
     - Click the "Get a Quote" or "Quick Inquiry" buttons to open the inquiry modal.
 
-## Production Deployment
+## Deployment Guide (cPanel / Shared Hosting)
 
-To run this application on a production website, you need to build the project into static files and host them on a web server. Here is a step-by-step process:
+Since this application consists of a **React Frontend** and a **Static HTML Admin Panel**, deploying to cPanel shared hosting is straightforward involving building the app and configuring server routing.
 
-### Prerequisites
-- A web server (e.g., Nginx, Apache) or a static hosting provider (e.g., Vercel, Netlify, AWS S3).
-- Node.js and npm/yarn installed on your local machine to run the build command.
+### Phase 1: Prepare the Build Locally
 
-### Step 1: Build the Project
-First, you need to compile the React/TypeScript application into static HTML, CSS, and JavaScript files. Assuming a standard React project setup (like Create React App or Vite), you would run the following command in your project's root directory:
+1.  **Build the React App**
+    Open your terminal (command prompt) in the project root directory and run:
+    ```bash
+    npm install
+    npm run build
+    ```
+    This will create a new folder named `dist` (or sometimes `build`) in your project root containing your optimized website.
 
-```bash
-# Using npm
-npm install
-npm run build
+2.  **Include the Admin Panel**
+    Since your `admin` folder is static HTML/JS outside the React logic, it must be manually included.
+    *   Locate the `dist` folder created in step 1.
+    *   Copy your entire `admin` folder (from your source code).
+    *   Paste it **inside** the `dist` folder.
+    *   *Structure check:* You should now have `dist/index.html`, `dist/assets/...`, and `dist/admin/index.html`.
 
-# Or using yarn
-yarn install
-yarn build
-```
-This command will create a `build` (or `dist`) folder containing the optimized, production-ready static assets.
+3.  **Create the `.htaccess` File (Crucial for React Router)**
+    React is a Single Page Application (SPA). If a user visits `yourdomain.com/products` and refreshes, the server needs to know to load `index.html` instead of looking for a directory named "products".
+    *   Inside your `dist` folder, create a new text file named `.htaccess` (ensure there is a dot at the start).
+    *   Paste the following code into it:
+    ```apache
+    <IfModule mod_rewrite.c>
+      RewriteEngine On
+      RewriteBase /
+      RewriteRule ^index\.html$ - [L]
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteCond %{REQUEST_FILENAME} !-l
+      RewriteRule . /index.html [L]
+    </IfModule>
+    ```
 
-### Step 2: Deploy Static Files
-Upload the contents of the `build` (or `dist`) folder to the root directory of your web server or hosting provider. This includes `index.html`, the static CSS/JS bundles, and any other assets.
+4.  **Zip the Contents**
+    *   Go **inside** the `dist` folder.
+    *   Select all files (the `assets` folder, `admin` folder, `index.html`, and `.htaccess`).
+    *   Right-click and Zip them into a file named `deploy.zip`.
 
-The `admin` folder and its contents should also be uploaded to maintain the admin panel functionality.
+### Phase 2: Upload to cPanel
 
-### Step 3: Configure Server for SPA Routing
-Since this is a Single Page Application (SPA) using React Router, you must configure your server to handle client-side routing correctly. All requests for non-existent paths should be redirected to the root `index.html` file. This allows React Router to take over and display the correct page.
+1.  **Log in to cPanel:** Log in to your hosting provider's cPanel dashboard.
+2.  **Open File Manager:** Find the "Files" section and click on "File Manager".
+3.  **Navigate to Public Folder:**
+    *   For main domain: Go to `public_html`.
+    *   For subdomain: Navigate to the specific folder for that subdomain.
+4.  **Clean the Directory:** Remove default files (like `default.html` or `cgi-bin`) to ensure your app loads correctly.
+5.  **Upload:**
+    *   Click "Upload" in the top toolbar.
+    *   Drag and drop your `deploy.zip` file.
+    *   Wait for the progress bar to turn green.
+6.  **Extract:**
+    *   Right-click on `deploy.zip` in the file manager.
+    *   Select "Extract" and extract to the current directory.
+    *   Once extracted, you can delete `deploy.zip`.
 
-**Example for Nginx:**
-Add the following `try_files` directive to your server block configuration:
-```nginx
-server {
-  # ... other server config
-  location / {
-    root /path/to/your/project/build;
-    try_files $uri /index.html;
-  }
-}
-```
+### Phase 3: Verification
 
-**Example for Apache:**
-Create a `.htaccess` file in your root deployment directory with the following content:
-```apache
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
-</IfModule>
-```
-Most modern static hosting providers (like Vercel or Netlify) handle this SPA routing configuration automatically.
+1.  **Check the Main Site:** Visit your domain. Navigate to a sub-page (e.g., Products) and refresh the browser. If the page reloads without a 404 error, your `.htaccess` is working.
+2.  **Check the Admin Panel:** Visit `www.yourdomain.com/admin/`.
+    *   **Username:** `admin`
+    *   **Password:** `password`
 
-## Admin Panel Access
+### Troubleshooting
 
-A simple admin panel is included for demonstration purposes.
+-   **White Screen:** If the site loads a white screen, check the browser console (F12). If hosting in a subfolder (e.g., `domain.com/app`), you may need to configure the `base` property in your vite config before building.
+-   **404 on Refresh:** Ensure the `.htaccess` file exists and is located in the same directory as `index.html`.
+-   **Data Not Saving:** Changes in the Admin panel are saved to `localStorage`. Since there is no backend database, changes are local to the browser you are using.
 
-1.  **Navigate to the Login Page:** Access the admin login page by visiting `/admin/index.html` in your browser. A link is also available in the website footer.
-2.  **Enter Credentials:**
-    - **Username:** `admin`
-    - **Password:** `password`
-3.  **Access Dashboard:** Upon successful login, you will be redirected to the admin dashboard. From here, you can manage products.
+## Content Management Guide
+
+Since this is a **Static Web App** (no backend database), content updates work differently than a CMS like WordPress.
+
+### 1. Managing Images
+The app does not support direct file uploads via the Admin Panel because there is no backend server. You must upload images manually via cPanel.
+
+1.  **Log in to cPanel** and open **File Manager**.
+2.  Navigate to your website's root folder (e.g., `public_html`).
+3.  Create a folder named `assets` if it doesn't exist.
+4.  **Upload** your image file (e.g., `new-client-logo.png`).
+5.  The **URL** for this image will be `/assets/new-client-logo.png`. Use this URL in the Admin Panel.
+
+### 2. Managing Products, Collections, and Clients
+
+There are two methods to manage content:
+
+#### Method A: Admin Panel (For Quick Updates & Testing)
+*Note: Changes made via the Admin Panel are saved to your **browser's Local Storage**. They are visible ONLY to you on that specific browser. This is perfect for testing or demos.*
+
+1.  **Login:** Go to `yourdomain.com/admin/`.
+    *   **User:** `admin`
+    *   **Pass:** `password`
+2.  **Products:** Click "Products" in the sidebar. Use the "Add New Product" button or "Edit/Delete" buttons.
+3.  **Collections (Categories):** Click "Categories" in the sidebar to manage product categories.
+4.  **Clients:** Click "Clients" in the sidebar to add or remove logos from the "Trusted Clients" homepage section.
+
+#### Method B: Source Code (For Permanent Public Changes)
+To make changes visible to **all visitors permanently**, you should update the source data files and redeploy the app.
+
+**To Update Products:**
+1.  Open `data/productData.ts`.
+2.  Add a new object to the `staticProducts` array.
+3.  Save the file.
+
+**To Update Collections (Categories):**
+1.  Open `data/categoryData.ts`.
+2.  Add or modify objects in the `staticCategories` array.
+
+**To Update Client Logos:**
+1.  Open `data/clientData.ts`.
+2.  Add a new client object:
+    ```typescript
+    { 
+      id: 13, 
+      client_name: 'New Client Name', 
+      logo_image: '/assets/logo.png' // Ensure you uploaded this image to cPanel
+    }
+    ```
+
+**After updating source files:**
+1.  Run `npm run build`.
+2.  Follow the **Deployment Guide** above to upload the new `dist` folder to cPanel.
 
 ## File Structure
 
@@ -112,18 +171,20 @@ A simple admin panel is included for demonstration purposes.
 │   │   ├── data-manager.js   # Handles localStorage data for admin
 │   │   ├── static-data.js    # Holds initial data for admin
 │   │   ├── products.js       # Logic for product list page
-│   │   └── product-edit.js   # Logic for product edit page
+│   │   ├── product-edit.js   # Logic for product edit page
+│   │   ├── categories.js     # Logic for category list
+│   │   ├── category-edit.js  # Logic for category edit
+│   │   ├── clients.js        # Logic for clients list
+│   │   └── client-edit.js    # Logic for client edit
 │   ├── dashboard.html        # Admin dashboard page
 │   ├── index.html            # Admin login page
 │   ├── products.html         # Product management page
-│   └── product-edit.html     # Product creation/editing page
+│   ├── product-edit.html     # Product creation/editing page
+│   ├── categories.html       # Category management page
+│   ├── category-edit.html    # Category creation/editing page
+│   ├── clients.html          # Client management page
+│   └── client-edit.html      # Client creation/editing page
 ├── components/
-│   ├── blog/
-│   ├── home/
-│   ├── layout/
-│   ├── products/
-│   ├── shared/
-│   └── ui/
 ├── data/                     # Mock data files with localStorage logic
 ├── pages/                    # Page components
 ├── App.tsx                   # Main application component with routing

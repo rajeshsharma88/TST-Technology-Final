@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Products - TST Technologies</title>
+    <title>Manage Categories - TST Technologies</title>
     <link rel="stylesheet" href="css/admin-style.css">
     <script src="js/auth.js"></script>
 </head>
@@ -13,8 +13,8 @@
             <h2>TST<span style="color: #007bff;">Tech</span></h2>
             <ul>
                 <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="products.html" class="active">Products</a></li>
-                <li><a href="categories.html">Categories</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="categories.html" class="active">Categories</a></li>
                 <li><a href="clients.html">Clients</a></li>
                 <li><a href="#">Inquiries</a></li>
                 <li><a href="#">Users</a></li>
@@ -22,12 +22,12 @@
         </aside>
         <main class="main-content">
             <header>
-                <h1>Manage Products</h1>
+                <h1>Manage Categories</h1>
                 <a href="#" id="logout-btn" class="logout-btn">Logout</a>
             </header>
 
             <div class="toolbar">
-                <a href="product-edit.html" class="btn btn-primary">Add New Product</a>
+                <a href="category-edit.html" class="btn btn-primary">Add New Category</a>
             </div>
 
             <div class="content-table">
@@ -35,17 +35,15 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Featured</th>
+                            <th>Thumbnail</th>
+                            <th>Name</th>
+                            <th>Slug</th>
+                            <th>Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="products-table-body">
-                        <!-- Products will be loaded here by JS -->
+                    <tbody id="categories-table-body">
+                        <!-- Categories will be loaded here by JS -->
                     </tbody>
                 </table>
             </div>
@@ -54,7 +52,7 @@
     
     <script src="js/static-data.js"></script>
     <script src="js/data-manager.js"></script>
-    <script src="js/products.js"></script>
+    <script src="js/categories.js"></script>
 
     <script>
         document.getElementById('logout-btn').addEventListener('click', (e) => {

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category - TST Technologies</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <aside class="sidebar">
+            <h2>TST<span style="color: #007bff;">Tech</span></h2>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="categories.html" class="active">Categories</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="#">Inquiries</a></li>
+                <li><a href="#">Users</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1 id="page-title">Add New Category</h1>
+                <a href="#" id="logout-btn" class="logout-btn">Logout</a>
+            </header>
+
+            <div class="dashboard-card">
+                <form id="category-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">Slug (Auto-generated if empty)</label>
+                            <input type="text" id="slug" name="slug" placeholder="e.g. web-development">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="thumbnail">Thumbnail Image URL</label>
+                            <input type="url" id="thumbnail" name="thumbnail" required>
+                            <small>Upload image via cPanel File Manager to <code>public_html/assets/</code> and paste link here (e.g. <code>/assets/cat.jpg</code>) or use an external URL.</small>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <a href="categories.html" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Save Category</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/static-data.js"></script>
+    <script src="js/data-manager.js"></script>
+    <script src="js/category-edit.js"></script>
+    
+    <script>
+        document.getElementById('logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.removeItem('isAdminAuthenticated');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
