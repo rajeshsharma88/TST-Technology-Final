@@ -48,8 +48,21 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ closeModal, productInterest }
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      console.log('Form Submitted:', formData);
-      // Mock submission
+      // Save to localStorage for Admin Panel
+      try {
+        const newInquiry = {
+            id: Date.now(),
+            ...formData,
+            date: new Date().toISOString()
+        };
+        const existingInquiriesJSON = localStorage.getItem('inquiries');
+        const existingInquiries = existingInquiriesJSON ? JSON.parse(existingInquiriesJSON) : [];
+        localStorage.setItem('inquiries', JSON.stringify([newInquiry, ...existingInquiries]));
+        console.log('Inquiry saved locally');
+      } catch (error) {
+        console.error('Failed to save inquiry', error);
+      }
+
       setIsSubmitted(true);
       setTimeout(() => {
         closeModal();

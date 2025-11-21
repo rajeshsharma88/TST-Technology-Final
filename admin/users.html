@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Clients - TST Technologies</title>
+    <title>Manage Users - TST Technologies</title>
     <link rel="stylesheet" href="css/admin-style.css">
     <script src="js/auth.js"></script>
 </head>
@@ -16,19 +16,19 @@
                 <li><a href="dashboard.html">Dashboard</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="categories.html">Categories</a></li>
-                <li><a href="clients.html" class="active">Clients</a></li>
+                <li><a href="clients.html">Clients</a></li>
                 <li><a href="inquiries.html">Inquiries</a></li>
-                <li><a href="users.html">Users</a></li>
+                <li><a href="users.html" class="active">Users</a></li>
             </ul>
         </aside>
         <main class="main-content">
             <header>
-                <h1>Manage Clients</h1>
+                <h1>Manage Users</h1>
                 <a href="#" id="logout-btn" class="logout-btn">Logout</a>
             </header>
 
             <div class="toolbar">
-                <a href="client-edit.html" class="btn btn-primary">Add New Client</a>
+                <a href="user-edit.html" class="btn btn-primary">Add New User</a>
             </div>
 
             <div class="content-table">
@@ -36,13 +36,13 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Logo</th>
-                            <th>Client Name</th>
+                            <th>Username</th>
+                            <th>Role</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="clients-table-body">
-                        <!-- Clients will be loaded here by JS -->
+                    <tbody id="users-table-body">
+                        <!-- Users will be loaded here by JS -->
                     </tbody>
                 </table>
             </div>
@@ -51,7 +51,7 @@
     
     <script src="js/static-data.js"></script>
     <script src="js/data-manager.js"></script>
-    <script src="js/clients.js"></script>
+    <script src="js/users.js"></script>
 
     <script>
         document.getElementById('logout-btn').addEventListener('click', (e) => {

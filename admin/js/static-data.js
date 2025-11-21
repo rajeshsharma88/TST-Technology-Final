@@ -1,3 +1,4 @@
+
 const staticData = {
     products: [
         {
@@ -516,5 +517,8 @@ const staticData = {
       { id: 10, client_name: 'Global Tech', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=Global' },
       { id: 11, client_name: 'NextGen', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=NextGen' },
       { id: 12, client_name: 'Connect IT', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=ConnectIT' },
+    ],
+    users: [
+        { id: 1, username: 'admin', password: 'password', role: 'admin' }
     ]
 };

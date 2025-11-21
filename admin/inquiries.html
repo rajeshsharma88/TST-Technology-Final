@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Clients - TST Technologies</title>
+    <title>Inquiries - TST Technologies</title>
     <link rel="stylesheet" href="css/admin-style.css">
     <script src="js/auth.js"></script>
 </head>
@@ -16,33 +16,30 @@
                 <li><a href="dashboard.html">Dashboard</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="categories.html">Categories</a></li>
-                <li><a href="clients.html" class="active">Clients</a></li>
-                <li><a href="inquiries.html">Inquiries</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="inquiries.html" class="active">Inquiries</a></li>
                 <li><a href="users.html">Users</a></li>
             </ul>
         </aside>
         <main class="main-content">
             <header>
-                <h1>Manage Clients</h1>
+                <h1>Inquiries</h1>
                 <a href="#" id="logout-btn" class="logout-btn">Logout</a>
             </header>
-
-            <div class="toolbar">
-                <a href="client-edit.html" class="btn btn-primary">Add New Client</a>
-            </div>
 
             <div class="content-table">
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Logo</th>
-                            <th>Client Name</th>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Interest</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="clients-table-body">
-                        <!-- Clients will be loaded here by JS -->
+                    <tbody id="inquiries-table-body">
+                        <!-- Inquiries will be loaded here by JS -->
                     </tbody>
                 </table>
             </div>
@@ -51,7 +48,7 @@
     
     <script src="js/static-data.js"></script>
     <script src="js/data-manager.js"></script>
-    <script src="js/clients.js"></script>
+    <script src="js/inquiries.js"></script>
 
     <script>
         document.getElementById('logout-btn').addEventListener('click', (e) => {

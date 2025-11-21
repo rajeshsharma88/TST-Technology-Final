@@ -1,3 +1,4 @@
+
 const DataManager = {
     // Initialize data from static source if not in localStorage
     initializeData: () => {
@@ -9,6 +10,9 @@ const DataManager = {
         }
         if (!localStorage.getItem('clientData')) {
             localStorage.setItem('clientData', JSON.stringify(staticData.clients));
+        }
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users', JSON.stringify(staticData.users));
         }
     },
     
@@ -104,6 +108,51 @@ const DataManager = {
         let clients = DataManager.getClients();
         clients = clients.filter(c => c.id !== id);
         localStorage.setItem('clientData', JSON.stringify(clients));
+    },
+
+    // --- Inquiries ---
+    getInquiries: () => {
+        return JSON.parse(localStorage.getItem('inquiries') || '[]');
+    },
+
+    deleteInquiry: (id) => {
+        let inquiries = DataManager.getInquiries();
+        inquiries = inquiries.filter(i => i.id !== id);
+        localStorage.setItem('inquiries', JSON.stringify(inquiries));
+    },
+
+    // --- Users ---
+    getUsers: () => {
+        return JSON.parse(localStorage.getItem('users') || '[]');
+    },
+
+    getUserById: (id) => {
+        const users = DataManager.getUsers();
+        return users.find(u => u.id === id);
+    },
+
+    saveUser: (userToSave) => {
+        let users = DataManager.getUsers();
+        if (userToSave.id) { // Update
+            users = users.map(u => u.id === userToSave.id ? userToSave : u);
+        } else { // Create
+            const maxId = users.reduce((max, u) => u.id > max ? u.id : max, 0);
+            userToSave.id = maxId + 1;
+            users.push(userToSave);
+        }
+        localStorage.setItem('users', JSON.stringify(users));
+    },
+
+    deleteUser: (id) => {
+        let users = DataManager.getUsers();
+        // Prevent deleting the last user to avoid lockout
+        if (users.length <= 1) {
+            alert('Cannot delete the last user.');
+            return false;
+        }
+        users = users.filter(u => u.id !== id);
+        localStorage.setItem('users', JSON.stringify(users));
+        return true;
     }
 };
 

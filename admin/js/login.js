@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const errorMessage = document.getElementById('error-message');
@@ -8,11 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = e.target.username.value;
         const password = e.target.password.value;
 
-        // In a real application, you would make an API call here.
-        // For this demo, we'll use hardcoded credentials.
-        if (username === 'admin' && password === 'password') {
+        const users = DataManager.getUsers();
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
             // Store authentication state in sessionStorage
             sessionStorage.setItem('isAdminAuthenticated', 'true');
+            sessionStorage.setItem('adminUser', JSON.stringify(user));
             // Redirect to the dashboard
             window.location.href = 'dashboard.html';
         } else {
