@@ -54,12 +54,23 @@ const staticCategories: Category[] = [
 let categories: Category[];
 
 try {
-  const storedCategoriesJSON = localStorage.getItem('categories');
+  const storedCategoriesJSON = typeof localStorage !== 'undefined' ? localStorage.getItem('categories') : null;
   if (storedCategoriesJSON) {
-    categories = JSON.parse(storedCategoriesJSON);
+    const parsed = JSON.parse(storedCategoriesJSON);
+    // Use stored categories only when it's a non-empty array; otherwise fallback.
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      categories = parsed as Category[];
+    } else {
+      categories = staticCategories;
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('categories', JSON.stringify(staticCategories));
+      }
+    }
   } else {
     categories = staticCategories;
-    localStorage.setItem('categories', JSON.stringify(staticCategories));
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('categories', JSON.stringify(staticCategories));
+    }
   }
 } catch (error) {
   console.error('Error handling categories from localStorage:', error);
