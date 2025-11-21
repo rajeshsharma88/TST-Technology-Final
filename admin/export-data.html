@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Data - TST Technologies</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <script src="js/auth.js"></script>
+    <style>
+        .code-block {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e9ecef;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ced4da;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+        }
+        .code-header h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        textarea.code-area {
+            width: 100%;
+            height: 300px;
+            font-family: monospace;
+            font-size: 14px;
+            padding: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 0 0 4px 4px;
+            background: #f8f9fa;
+            color: #212529;
+            white-space: pre;
+            overflow: auto;
+        }
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
+        .guide-box {
+            background: #e7f1ff;
+            border-left: 4px solid #007bff;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <aside class="sidebar">
+            <h2>TST<span style="color: #007bff;">Tech</span></h2>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="inquiries.html">Inquiries</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="export-data.html" class="active">Export Data</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Permanent Save / Export Data</h1>
+                <a href="#" id="logout-btn" class="logout-btn">Logout</a>
+            </header>
+
+            <div class="guide-box">
+                <h3>How to make changes Permanent & Public</h3>
+                <p>Because this is a static app without a database server, changes made in this Admin Panel are stored in your browser only.</p>
+                <p><strong>To publish your changes to the live website:</strong></p>
+                <ol style="margin-left: 1.5rem;">
+                    <li>Copy the code generated below for the section you modified.</li>
+                    <li>Open the corresponding file in your local project (e.g., <code>data/productData.ts</code>).</li>
+                    <li>Replace the entire content of that file with the copied code.</li>
+                    <li>Run <code>npm run build</code> and upload the new <code>dist</code> folder to cPanel.</li>
+                </ol>
+            </div>
+
+            <!-- Products Export -->
+            <div class="code-block">
+                <div class="code-header">
+                    <h3>data/productData.ts</h3>
+                    <button class="copy-btn" onclick="copyToClipboard('products-code')">Copy Code</button>
+                </div>
+                <textarea id="products-code" class="code-area" readonly></textarea>
+            </div>
+
+            <!-- Categories Export -->
+            <div class="code-block">
+                <div class="code-header">
+                    <h3>data/categoryData.ts</h3>
+                    <button class="copy-btn" onclick="copyToClipboard('categories-code')">Copy Code</button>
+                </div>
+                <textarea id="categories-code" class="code-area" readonly></textarea>
+            </div>
+
+            <!-- Clients Export -->
+            <div class="code-block">
+                <div class="code-header">
+                    <h3>data/clientData.ts</h3>
+                    <button class="copy-btn" onclick="copyToClipboard('clients-code')">Copy Code</button>
+                </div>
+                <textarea id="clients-code" class="code-area" readonly></textarea>
+            </div>
+
+        </main>
+    </div>
+    
+    <script src="js/static-data.js"></script>
+    <script src="js/data-manager.js"></script>
+    <script src="js/export-data.js"></script>
+
+    <script>
+        document.getElementById('logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.removeItem('isAdminAuthenticated');
+            window.location.href = 'index.html';
+        });
+
+        function copyToClipboard(elementId) {
+            const textarea = document.getElementById(elementId);
+            textarea.select();
+            document.execCommand('copy');
+            alert('Code copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
