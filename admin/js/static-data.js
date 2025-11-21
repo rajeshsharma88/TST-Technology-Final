@@ -519,6 +519,6 @@ const staticData = {
       { id: 12, client_name: 'Connect IT', logo_image: 'https://via.placeholder.com/150/cccccc/000000?text=ConnectIT' },
     ],
     users: [
-        { id: 1, username: 'admin', password: 'password', role: 'admin' }
+        { id: 1, username: 'imrajesh8800@gmail.com', password: 'Accuster1208$', role: 'admin' }
     ]
 };

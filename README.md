@@ -1,3 +1,4 @@
+
 # TST Technologies Website
 
 This is a modern, responsive frontend for TST Technologies, a fictional IT solutions company. The project showcases a dynamic hero slider, a comprehensive product showcase with filtering and pagination, category pages, and an inquiry modal. It is built using React, TypeScript, and Tailwind CSS.
@@ -96,8 +97,8 @@ Since this application consists of a **React Frontend** and a **Static HTML Admi
 
 1.  **Check the Main Site:** Visit your domain. Navigate to a sub-page (e.g., Products) and refresh the browser. If the page reloads without a 404 error, your `.htaccess` is working.
 2.  **Check the Admin Panel:** Visit `www.yourdomain.com/admin/`.
-    *   **Username:** `admin`
-    *   **Password:** `password`
+    *   **Username:** `imrajesh8800@gmail.com`
+    *   **Password:** `Accuster1208$`
 
 ### Troubleshooting
 
@@ -126,8 +127,8 @@ There are two methods to manage content:
 *Note: Changes made via the Admin Panel are saved to your **browser's Local Storage**. They are visible ONLY to you on that specific browser. This is perfect for testing or demos.*
 
 1.  **Login:** Go to `yourdomain.com/admin/`.
-    *   **User:** `admin`
-    *   **Pass:** `password`
+    *   **User:** `imrajesh8800@gmail.com`
+    *   **Pass:** `Accuster1208$`
 2.  **Products:** Click "Products" in the sidebar. Use the "Add New Product" button or "Edit/Delete" buttons.
 3.  **Collections (Categories):** Click "Categories" in the sidebar to manage product categories.
 4.  **Clients:** Click "Clients" in the sidebar to add or remove logos from the "Trusted Clients" homepage section.
